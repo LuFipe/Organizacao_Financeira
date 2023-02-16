@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "express": "^4.18.2",
+    "sequelize": "^6.28.0",
+    "sqlite3": "^5.1.4"
+  },
+  "name": "economista_grego",
+  "version": "1.0.0",
+  "description": "Programa de auxilio à organização de economia pessoal",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LuFipe/Organizacao_Financeira.git"
+  },
+  "keywords": [
+    "economia",
+    "finanças",
+    "pessoal"
+  ],
+  "author": "Luiz Felipe Castro Coelho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/LuFipe/Organizacao_Financeira/issues"
+  },
+  "homepage": "https://github.com/LuFipe/Organizacao_Financeira#readme"
+}
