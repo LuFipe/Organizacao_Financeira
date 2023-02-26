@@ -54,7 +54,7 @@ module.exports.operacoes = bancos.op.define('Operacoes',{
 	}
 },{freezeTableName:true});
 
-module.exports.opInvest = bancos.op.define('investidos',{
+module.exports.opInvest = bancos.op.define('Investidos',{
 	id:{
 		type: Sequelize.INTEGER,
 		primaryKey: true,
@@ -183,4 +183,50 @@ module.exports.demBalPat = bancos.dem.define('Demonstrativo_Balanco_Patrimonial'
 		type: Sequelize.FLOAT,
 		allowNull:false
 	}
-})
+},{freezeTableName:true})
+
+module.exports.demCashFlow = bancos.dem.define('Demonstrativo_Cash_Flow',{
+	id:{
+		type: Sequelize.INTEGER,
+		primaryKey: true,
+		autoIncrement: true,
+		allowNull: false
+	},
+	ano:{
+		type: Sequelize.INTEGER,
+		allowNull: false
+	},
+	mes:{
+		type: Sequelize.STRING,
+		allowNull: false
+	},
+	rendaMensal:{
+		type: Sequelize.FLOAT,
+		allowNull: false
+	},
+	divContraida:{
+		type: Sequelize.FLOAT,
+		allowNull: false
+	},
+	emprestado:{
+		type: Sequelize.FLOAT,
+		allowNull:false
+	},
+	parcelEmprest:{
+		type: Sequelize.FLOAT,
+		allowNull:false
+	},
+	compInvestimento:{
+		type: Sequelize.FLOAT,
+		allowNull:false
+	},
+	vendInvestimento:{
+		type: Sequelize.FLOAT,
+		allowNull:false
+	},
+	desval_Investimento:{
+		type:Sequelize.FLOAT,
+		allowNull:false
+	}
+
+},{freezeTableName:true})
