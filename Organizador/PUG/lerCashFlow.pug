@@ -1,0 +1,36 @@
+doctype doctype html
+html(lang="pt-br")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title Document
+	body 
+		header 
+		main 
+			h1 FLUXO DE CAIXA 
+			table 
+				tr 
+					th DATA 
+					th ID 
+					th RENDA MENSAL 
+					th DIVIDA CONTRAIDA 
+					th VALOR EMPRESTADO 
+					th VALOR RECEBIDO 
+					th COMPRA DE INVESTIMENTO 
+					th VENDA DE INVESTIMENTO 
+					th DESVALORIZAÇAO/VALORIZAÇÃO DE INVESTIMENTO
+					th NET CASH
+				for csFlow in CASHFLOW 
+					tr 
+						th=csFlow['createdAt']
+						th=csFlow['id']
+						th=csFlow['rendaMensal']
+						th=csFlow['divContraida']
+						th=csFlow['emprestado']
+						th=csFlow['parcelEmprestado']
+						th=csFlow['compInvestimento']
+						th=csFlow['vendInvestimento']
+						th=csFlow['desval_Investimento']
+						th=csFlow['net_cash']
+		footer 

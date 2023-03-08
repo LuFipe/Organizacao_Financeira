@@ -1,0 +1,35 @@
+doctype doctype html
+html(lang="pt-br")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title Document
+	body 
+		header 
+		main
+			h1 TABELA DE DEMONSTRATIVO DE RENDA
+			table 
+				tr 
+					th DATA
+					th ID
+					th ENTRADA PESSOAL 
+					th ENTRADA OPERACIONAL 
+					th ENTRADA TOTAL 
+					th SAIDA PESSOAL 
+					th SAIDA OPERACIONAL 
+					th SAIDA TOTAL 
+					th RENDA MENSAL 
+				for rend in RENDA
+					tr 
+						th=rend['createdAt']
+						th=rend['id']
+						th=rend['incomePessoal']
+						th=rend['incomeOperacional']
+						th=rend['incomeTotal']
+						th=rend['expensePessoal']
+						th=rend['expenseOperacional']
+						th=rend['expenseTotal']
+						th=rend['rendaMensal']
+			
+		footer

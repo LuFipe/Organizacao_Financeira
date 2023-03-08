@@ -1,0 +1,45 @@
+doctype doctype html
+html(lang="pt-br")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title Document
+	body 
+		header 
+		main 
+			h1 CREATE
+			form(action="criarBalPat", method="post") 
+				label(for="cash_ID") CASH:
+				input(type="number",id="cash_ID" name="cash_NOME") 
+				label(for="recebivel_ID") RECEBIVEL:
+				input(type="number",id="recebivel_ID" name="recebivel_NOME") 
+				label(for="pagavel_ID") PAGAVEL:
+				input(type="number",id="pagavel_ID" name="pagavel_NOME") 
+				label(for="investido_ID") INVESTIDO:
+				input(type="number",id="investido_ID" name="investido_NOME") 
+				input(type="submit")
+			if 	TABELA
+				h1 READ
+				table
+					tr 
+						th ID
+						th DATA
+						th CASH
+						th RECEBIVEIS
+						th ASSETS
+						th PAGAVEIS
+						th LIABILITY
+						th PATRIMONIO
+					for pat in PATRIMONIO
+						tr
+							th=pat['id']
+							th=pat['createdAt']
+							th=pat['cash']
+							th=pat['recebiveis']
+							th=pat['investido']
+							th=pat['asset']
+							th=pat['pagaveis']
+							th=pat['liability']
+
+		footer 

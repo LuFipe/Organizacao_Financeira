@@ -1,0 +1,33 @@
+doctype doctype html
+html(lang="pt-br")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title Document
+	body 
+		header 
+		main
+			h1 TABELA DE DEMONSTRATIVO DE RENDA
+			table 
+				tr 
+					th DATA
+					th ID
+					th TICKER
+					th VALOR INICIAL
+					th VALOR FINAL
+					th VARIAÇÃO
+					th DEPOSITO/RETIRADA
+					th DESCRIÇÃO
+				for opInv in OP_INVESTIMENTO
+					tr 
+						th=opInv['createdAt']
+						th=opInv['id']
+						th=opInv['ticker']
+						th=opInv['val0']
+						th=opInv['valI']
+						th=opInv['variacao']
+						th=opInv['depos_retirado']
+						th=opInv['descricao']
+			
+		footer

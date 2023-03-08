@@ -1,0 +1,40 @@
+doctype doctype html
+html(lang="pt-br")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title Document
+	body 
+		header
+		main 
+			div
+				a(href="/criarOp") Click aqui para adicionar uma operação
+			div
+				a(href="/criarBalPat") Click aqui para adicionar o Balanço Patrimonial
+			div
+				a(href="/lerOp") Click aqui para ver as operações
+			div=OPERACAO[0]
+			table
+				tr 
+					th ID 
+					th REF
+					th NATUREZA
+					th TIPO
+					th SUBTIPO
+					th VALOR
+					th DESCRICAO
+					th SITUAÇÃO
+					th ESTADO
+				for op in OPERACAO
+					tr 
+						th=op['id']
+						th=op['ref']
+						th=op['natureza']
+						th=op['tipo']
+						th=op['subtipo']
+						th=op['valor']
+						th=op['descricao']
+						th=op['situacao']
+						th=op['etado']
+		footer 

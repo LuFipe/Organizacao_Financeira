@@ -12,18 +12,6 @@ module.exports.operacoes = bancos.op.define('Operacoes',{
 		type: Sequelize.INTEGER,
 		allowNull: true
 	},
-	ano:{
-		type: Sequelize.INTEGER,
-		allowNull: false
-	},
-	mes:{
-		type: Sequelize.STRING,
-		allowNull: false
-	},
-	dia:{
-		type: Sequelize.INTEGER,
-		allowNull: false
-	},
 	natureza:{
 		type: Sequelize.STRING,
 		allowNull:false
@@ -45,11 +33,11 @@ module.exports.operacoes = bancos.op.define('Operacoes',{
 		allowNull: false
 	},
 	situacao:{
-		type: Sequelize.STRING,
+		type: Sequelize.BOOLEAN,
 		allowNull:true
 	},
 	estado:{
-		type: Sequelize.INTEGER,
+		type: Sequelize.BOOLEAN,
 		allowNull: false
 	}
 },{freezeTableName:true});
@@ -61,20 +49,8 @@ module.exports.opInvest = bancos.op.define('Investidos',{
 		autoIncrement: true,
 		allowNull: false
 	},
-	ano:{
-		type: Sequelize.INTEGER,
-		allowNull: false
-	},
-	mes:{
+	ticker:{
 		type: Sequelize.STRING,
-		allowNull: false
-	},
-	dia:{
-		type: Sequelize.INTEGER,
-		allowNull: false
-	},
-	refID:{
-		type: Sequelize.INTEGER,
 		allowNull: false
 	},
 	val0:{
@@ -92,6 +68,10 @@ module.exports.opInvest = bancos.op.define('Investidos',{
 	depos_retirado:{
 		type: Sequelize.FLOAT,
 		allowNull: false
+	},
+	descricao:{
+		type: Sequelize.TEXT,
+		allowNull:false
 	}
 },{freezeTableName:true});
 
@@ -100,14 +80,6 @@ module.exports.demRenda = bancos.dem.define('Demonstrativo_Renda',{
 		type: Sequelize.INTEGER,
 		primaryKey: true,
 		autoIncrement: true,
-		allowNull: false
-	},
-	ano:{
-		type: Sequelize.INTEGER,
-		allowNull: false
-	},
-	mes:{
-		type: Sequelize.STRING,
 		allowNull: false
 	},
 	incomePessoal:{
@@ -147,14 +119,6 @@ module.exports.demBalPat = bancos.dem.define('Demonstrativo_Balanco_Patrimonial'
 		autoIncrement: true,
 		allowNull: false
 	},
-	ano:{
-		type: Sequelize.INTEGER,
-		allowNull: false
-	},
-	mes:{
-		type: Sequelize.STRING,
-		allowNull: false
-	},
 	cash:{
 		type: Sequelize.FLOAT,
 		allowNull:false
@@ -192,14 +156,6 @@ module.exports.demCashFlow = bancos.dem.define('Demonstrativo_Cash_Flow',{
 		autoIncrement: true,
 		allowNull: false
 	},
-	ano:{
-		type: Sequelize.INTEGER,
-		allowNull: false
-	},
-	mes:{
-		type: Sequelize.STRING,
-		allowNull: false
-	},
 	rendaMensal:{
 		type: Sequelize.FLOAT,
 		allowNull: false
@@ -208,11 +164,15 @@ module.exports.demCashFlow = bancos.dem.define('Demonstrativo_Cash_Flow',{
 		type: Sequelize.FLOAT,
 		allowNull: false
 	},
+	divPagamento:{
+		type: Sequelize.FLOAT,
+		allowNull: false
+	},
 	emprestado:{
 		type: Sequelize.FLOAT,
 		allowNull:false
 	},
-	parcelEmprest:{
+	recebido:{
 		type: Sequelize.FLOAT,
 		allowNull:false
 	},
@@ -225,6 +185,10 @@ module.exports.demCashFlow = bancos.dem.define('Demonstrativo_Cash_Flow',{
 		allowNull:false
 	},
 	desval_Investimento:{
+		type:Sequelize.FLOAT,
+		allowNull:false
+	},
+	net_cash:{
 		type:Sequelize.FLOAT,
 		allowNull:false
 	}

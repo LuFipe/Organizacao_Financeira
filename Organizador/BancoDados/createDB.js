@@ -1,16 +1,13 @@
 const bancos = require('../db')
 const tabelas = require('../tabelas')
 
-module.exports.criarOperacao = async (year, month, day, rf, nat, tp, stp, vl, desc, est, sit)=>{
+module.exports.criarOperacao = async (rf, nat, tp, stp, vl, desc, est, sit)=>{
 	try{
 		const sinc = await bancos.op.sync()
 		console.log(sinc)
 
 		const inserir = tabelas.operacoes.create(
 			{
-				ano: year,
-				mes: month,
-				dia: day,
 				ref: rf,
 				natureza: nat,
 				tipo: tp,
@@ -26,17 +23,14 @@ module.exports.criarOperacao = async (year, month, day, rf, nat, tp, stp, vl, de
 	}
 };
 
-module.exports.criarOpInv = async (year, month, day, rfID, v0, vI, vari, dr)=>{
+module.exports.criarOpInv = async (tk, v0, vI, vari, dr)=>{
 	try{
 		const sinc = await bancos.op.sync();
 		console.log(sinc)
 
 		const inserir = tabelas.opInvest.create(
 			{
-				ano: year,
-				mes: month,
-				dia: day,
-				refID: rfID,
+				ticker: tk,
 				val0: v0,
 				valI: vI,
 				variacao: vari,
@@ -48,7 +42,7 @@ module.exports.criarOpInv = async (year, month, day, rfID, v0, vI, vari, dr)=>{
 	}
 };
 
-module.exports.criarRenda = async(year, month, incP, incO, expP, expO)=>{
+module.exports.criarRenda = async(incP, incO, expP, expO)=>{
 	try{
 		const sinc = await bancos.dem.sync();
 		console.log(sinc)
@@ -58,8 +52,6 @@ module.exports.criarRenda = async(year, month, incP, incO, expP, expO)=>{
 		let rdM = incT - expT;
 		const inserir = await tabelas.demRenda.create(
 			{
-				ano: year,
-				mes: month,
 				incomePessoal: incP,
 				incomeOperacional: incO,
 				incomeTotal: incT,
@@ -74,7 +66,7 @@ module.exports.criarRenda = async(year, month, incP, incO, expP, expO)=>{
 	}
 };
 
-module.exports.criarBalPat = async(year, month, cs, receb, invest, pag)=>{
+module.exports.criarBalPat = async(cs, receb, invest, pag)=>{
 	try{
 		const sinc = await bancos.dem.sync()
 		console.log(sinc)
@@ -85,8 +77,6 @@ module.exports.criarBalPat = async(year, month, cs, receb, invest, pag)=>{
 
 		const inserir = await tabelas.demBalPat.create(
 			{
-				ano: year,
-				mes: month,
 				cash: cs,
 				recebiveis: receb,
 				investido: invest,
@@ -101,22 +91,23 @@ module.exports.criarBalPat = async(year, month, cs, receb, invest, pag)=>{
 	}
 };
 
-module.exports.criarCashFlow = async(year, month, rdM, divC, emp, pEmp, cInv, vInv, dInv)=>{
+module.exports.criarCashFlow = async(rdM, divC, divP, emp, rcb, cInv, vInv, dInv)=>{
 	try{
 		const sinc = await bancos.dem.sync()
 		console.log(sinc)
 
+		nt_cs = rdM+divC+emp+pEmp+cInv+vInv+dInv;
 		const inserir = await tabelas.demCashFlow.create(
 			{
-				ano: year,
-				mes: month,
 				rendaMensal: rdM,
 				divContraida: divC,
+				divPagamento: divP,
 				emprestado: emp,
-				parcelEmprestado: pEmp,
+				recebido: rcb,
 				compInvestimento: cInv,
 				vendInvestimento: vInv,
-				desval_Investimento: dInv
+				desval_Investimento: dInv,
+				net_cash:nt_cs
 			}
 		)
 	} catch(err){

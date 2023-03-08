@@ -1,6 +1,9 @@
 {
   "dependencies": {
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
     "express": "^4.18.2",
+    "pug": "^3.0.2",
     "sequelize": "^6.28.0",
     "sqlite3": "^5.1.4"
   },
@@ -9,7 +12,10 @@
   "description": "Programa de auxilio à organização de economia pessoal",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js",
+    "devstart": "nodemon app.js",
+    "serverstart": "DEBUG=economista_grego:* npm run devstart"
   },
   "repository": {
     "type": "git",
@@ -25,5 +31,8 @@
   "bugs": {
     "url": "https://github.com/LuFipe/Organizacao_Financeira/issues"
   },
-  "homepage": "https://github.com/LuFipe/Organizacao_Financeira#readme"
+  "homepage": "https://github.com/LuFipe/Organizacao_Financeira#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
 }

@@ -1,0 +1,71 @@
+doctype doctype html
+html(lang="pt-br")
+	head
+		meta(charset="UTF-8")
+		meta(http-equiv="X-UA-Compatible", content="IE=edge")
+		meta(name="viewport", content="width=device-width, initial-scale=1.0")
+		title Document
+	body 
+		header 
+		main 
+			h1 CREATE
+			form(action="/criarOp", method="post")
+				label(for="ref_ID") REF
+				select(id="ref_ID", name="ref_NAME") 
+					option(value=null) NULO 
+					if OPERACAO
+						for op in OPERACAO
+							if op['natureza'] == 'debto'
+								option(value=op['ref'])=op['ref'] 
+				label(for="nat_ID") NATUREZA
+				select(id="nat_ID", name="nat_NAME")
+					option(value="renda") RENDA
+					option(value="debto") DEBTO
+					option(value="investimento") INVESTIMENTO
+				label(for="tipo_ID") TIPO:
+				select(id="tipo_ID", name="tipo_NAME")
+					option(value="entrada") ENTRADA
+					option(value="saida") SAIDA
+					option(value="divida") DIVIDA
+					option(value="recebivel") RECEBIVEL
+					option(value="acao") AÇÃO
+					option(value="titulo") TITULO
+					option(value="fii") FII
+				label(for="stipo_ID") SUBTIPO
+				select(id="stipo_ID", name="stipo_NAME")
+					option(value="pessoal") PESSOAL
+					option(value="operacional") OPERACIONAL
+					option(value="contraido") CONTRAIDO
+					option(value="pagamento") PAGAMENTO
+					option(value="emprestado") EMPRESTADO
+					option(value="recebimento") RECEBIMENTO
+					option(value="compra") AÇÃO
+					option(value="venda") TITULO
+				label(for="valor_ID") VALOR:
+				input(type="number", step=0.00001, id="valor_ID", name="valor_NAME")
+				label(for="desc_ID") DESCRIÇÃO:
+				textarea(id="desc_ID", name="desc_NAME", cols="30", rows="10")
+				input(type="submit", value="ADICIONAR")
+			h1 READ
+			table 
+				tr 
+					th DATA
+					th ID
+					th NATUREZA
+					th TIPO
+					th SUBTIPO
+					th REFERENCIA
+					th VALOR
+					th DESCRIÇÃO
+					th SITUAÇÃO
+				for op in OPERACOES
+					tr
+						th=op['createdAt']
+						th=op['id']
+						th=op['natureza']
+						th=op['tipo']
+						th=op['subtipo']
+						th=op['ref']
+						th=op['valor']
+						th=op['descricao']
+						th=op['situacao']
